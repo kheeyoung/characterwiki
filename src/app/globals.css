@@ -1,0 +1,269 @@
+/* 기본 폰트 및 초기화 */
+body {
+  margin: 0;
+  font-family: "Segoe UI", "맑은 고딕", sans-serif;
+  background: #f5f5f5;
+  color: #222;
+}
+
+a {
+  text-decoration: none;
+  color: #0078d4;
+}
+
+header.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #FFE0EE;
+  border-bottom: 1px solid #ddd;
+  padding: 10px 20px;
+
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.nav-links a {
+  margin-right: 15px;
+  font-size: 0.95rem;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.search-form input[type="search"] {
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.content {
+  padding: 40px 20px;
+  max-width: 1000px;
+  margin: auto;
+  background: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  margin-top: 20px;
+}
+
+body {
+  font-family: "Helvetica", "Arial", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+}
+
+.document-header {
+  background-color: #ffffff;
+  border-bottom: 1px solid #ccc;
+  padding: 16px;
+}
+
+.title-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.document-title {
+  font-size: 28px;
+  margin: 0;
+}
+
+.document-title a {
+  text-decoration: none;
+  color: #0077cc;
+}
+
+.last-modified {
+  font-size: 14px;
+  color: #555;
+}
+
+.document-tools {
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tool-button {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 14px;
+  text-decoration: none;
+  color: #333;
+  display: flex;
+  align-items: center;
+}
+
+.tool-button:hover {
+  background-color: #e0e0e0;
+}
+
+.tool-button span {
+  margin-left: 4px;
+}
+
+.more-button {
+  cursor: pointer;
+}
+.document-category {
+  background-color: #f8f8f8;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  padding: 10px 16px;
+  font-size: 14px;
+  color: #444;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.category-label {
+  font-weight: bold;
+}
+
+.category-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 8px;
+}
+
+.category-item a {
+  text-decoration: none;
+  color: #0077cc;
+}
+
+.category-item a:hover {
+  text-decoration: underline;
+}
+
+
+.spoiler-warning {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.spoiler-box {
+  border: 1px solid gray;
+  border-top: 5px solid orange;
+  background-color: #fff8f0;
+  padding: 12px;
+  font-size: 14px;
+  line-height: 1.6;
+  max-width: 700px;
+  color: #333;
+}
+
+.spoiler-text {
+  font-weight: bold;
+}
+
+.spoiler-link {
+  color: #d9534f;
+  text-decoration: none;
+}
+
+.spoiler-link:hover {
+  text-decoration: underline;
+}
+
+
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 16px;
+  max-width: 1000px;
+  margin: 0 auto;
+  align-items: center;
+}
+
+
+.box {
+  flex: 1 1 200px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 600px) {
+  .container {
+    flex-direction: column;
+  }
+}
+
+.toggle-content {
+  padding: 10px;
+  margin: 10px;
+}
+
+.toggle-button {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border-bottom: 1px solid #000;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.toggle-button span.arrow {
+  margin-right: 8px;
+  font-weight: bold;
+}
+
+.toggle-section {
+  margin-bottom: 10px;
+}
+
+.textBox {
+  background: #eee;
+  border: 2px dashed #ccc;
+  border-left: 5px solid #71bc6d;
+  display: table;
+  margin: 1em 0;
+  padding: 1em;
+}
+
+.tagBox {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border-bottom: 1px solid #000;
+  border-top: 1px solid #000;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+
