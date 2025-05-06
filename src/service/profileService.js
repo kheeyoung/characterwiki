@@ -78,7 +78,6 @@ export async function getPersonality(id, num) {
       doc.data().oneWord,
       doc.data().content, 
     ));
-   
   });
 
   return result;

@@ -20,7 +20,7 @@ export default async function Editor({ searchParams }: Props) {
   if (!id) {
     return <div><Loading /></div>;
   }
-  
+
   //데이터 받아오기
   const PDRawData = await getCharacter(id, 0);
   const PerRawData = await getPersonality(id, 1);
@@ -36,9 +36,19 @@ export default async function Editor({ searchParams }: Props) {
   return (
     <div className="document-header">
       <main className="content">
-        <PublicProfileEd pd={pd} id={id} />
-        <PublicDocEd per={per} id={id} />
-        
+        <div style={{ marginTop: "16px", marginBottom: "16px" }}>
+          <div style={{ marginLeft: "10px", marginRight: "10px" }}>
+            <h2><strong>공개 프로필 수정</strong></h2>
+          </div>
+          <PublicProfileEd pd={pd} id={id} />
+        </div>
+        <div style={{ marginTop: "16px", marginBottom: "16px" }}>
+          <div style={{ marginLeft: "10px", marginRight: "10px" }}>
+            <h2><strong>공개 성격 수정</strong></h2>
+          </div>
+          <PublicDocEd per={per} id={id} />
+        </div>
+
       </main>
     </div>
   );

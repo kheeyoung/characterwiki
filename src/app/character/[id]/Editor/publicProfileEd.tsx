@@ -17,8 +17,9 @@ export default function PublicProfileEd({ pd, id }: { pd: any; id: string }) {
 
   return (
     <div className="container">
+      <div style={{ marginTop: "16px",marginBottom: "16px" }}>
       <div className="box">
-        <h2>기본 프로필 수정</h2>
+        
         <table className="mainSum">
           <tbody>
             <tr>
@@ -26,18 +27,18 @@ export default function PublicProfileEd({ pd, id }: { pd: any; id: string }) {
                 <div>
                   <span>
                     <div className="header-line">
-                      〈초세계급{" "}
-                      <input
+                      <strong>초세계급</strong>
+                      <input className="form-control"
                         type="text"
                         value={profileData.talent}
                         onChange={(e) =>
                           handleInputChange("talent", e.target.value)
                         }
                       />
-                      〉
+                      
                     </div>
                     <div className="header-line bold large">
-                      <input
+                      <input className="form-control"
                         type="text"
                         value={profileData.name}
                         onChange={(e) =>
@@ -45,7 +46,7 @@ export default function PublicProfileEd({ pd, id }: { pd: any; id: string }) {
                         }
                       />
                     </div>
-                    <div className="header-line">{profileData.originName}</div>
+                    
                   </span>
                 </div>
               </td>
@@ -66,7 +67,7 @@ export default function PublicProfileEd({ pd, id }: { pd: any; id: string }) {
             <tr>
               <td className="label">원어</td>
               <td className="value">
-                <input
+                <input className="form-control"
                   type="text"
                   value={profileData.originName}
                   onChange={(e) =>
@@ -78,7 +79,7 @@ export default function PublicProfileEd({ pd, id }: { pd: any; id: string }) {
             <tr>
               <td className="label">나이</td>
               <td className="value">
-                <input
+                <input className="form-control"
                   type="text"
                   value={profileData.age}
                   onChange={(e) => handleInputChange("age", e.target.value)}
@@ -90,7 +91,7 @@ export default function PublicProfileEd({ pd, id }: { pd: any; id: string }) {
               <td className="value">
                 <div>
                   신장 -{" "}
-                  <input
+                  <input className="form-control"
                     type="text"
                     value={profileData.height}
                     onChange={(e) =>
@@ -100,7 +101,7 @@ export default function PublicProfileEd({ pd, id }: { pd: any; id: string }) {
                 </div>
                 <div>
                   체중 -{" "}
-                  <input
+                  <input className="form-control"
                     type="text"
                     value={profileData.weight}
                     onChange={(e) =>
@@ -113,7 +114,7 @@ export default function PublicProfileEd({ pd, id }: { pd: any; id: string }) {
             <tr>
               <td className="label">생일</td>
               <td className="value">
-                <input
+                <input className="form-control"
                   type="text"
                   value={profileData.birth}
                   onChange={(e) => handleInputChange("birth", e.target.value)}
@@ -124,7 +125,7 @@ export default function PublicProfileEd({ pd, id }: { pd: any; id: string }) {
               <td className="label">소지품</td>
               <td className="value">
                 <div>
-                  <input
+                  <input className="form-control"
                     type="text"
                     value={profileData.belongings1}
                     onChange={(e) =>
@@ -133,7 +134,7 @@ export default function PublicProfileEd({ pd, id }: { pd: any; id: string }) {
                   />
                 </div>
                 <div>
-                  <input
+                  <input className="form-control"
                     type="text"
                     value={profileData.belongings2}
                     onChange={(e) =>
@@ -142,7 +143,7 @@ export default function PublicProfileEd({ pd, id }: { pd: any; id: string }) {
                   />
                 </div>
                 <div>
-                  <input
+                  <input className="form-control"
                     type="text"
                     value={profileData.belongings3}
                     onChange={(e) =>
@@ -156,7 +157,7 @@ export default function PublicProfileEd({ pd, id }: { pd: any; id: string }) {
               <td className="label">관계</td>
               <td className="value">
                 <div>
-                  <input
+                  <input className="form-control"
                     type="text"
                     value={profileData.relationship}
                     onChange={(e) =>
@@ -169,7 +170,7 @@ export default function PublicProfileEd({ pd, id }: { pd: any; id: string }) {
             <tr>
               <td className="label">인지도</td>
               <td className="value">
-                <input
+                <input className="form-control"
                   type="text"
                   value={profileData.awareness}
                   onChange={(e) =>
@@ -181,13 +182,13 @@ export default function PublicProfileEd({ pd, id }: { pd: any; id: string }) {
           </tbody>
         </table>
         <button
-          className="save-button"
+          className="btn btn-dark"
           onClick={() => saveProfile(id, "public", profileData)}
         >
           공개 프로필 저장
         </button>
         
-        
+        </div>
       </div>
     </div>
   );

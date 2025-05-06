@@ -34,7 +34,8 @@ export async function Personality({ params, num }: PageProps) {
 
 
                     {pl.map((pd, index) => (
-                        <ToggleSection title={pd.keyword} num={"1." + index} key={"1." + index}>
+                        console.log(pd.keyWord),
+                        <ToggleSection title={pd.keyWord} num={"1." + index} key={"1." + index}>
                             <div id="content" className="toggle-content">
                                 <blockquote className="textBox">
                                     <div>

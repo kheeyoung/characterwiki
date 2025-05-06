@@ -1,5 +1,6 @@
 "use client";
 
+
 import { useState } from "react";
 
 interface ToggleSectionProps {
@@ -15,7 +16,9 @@ const ToggleSection = ({ title, num, children }: ToggleSectionProps) => {
     setIsOpen((prev) => !prev);
   };
 
+
   return (
+    <div style={{ marginTop: "16px" }}>
     <div className="toggle-section">
       <button className="toggle-button" onClick={toggle}>
         <span className="arrow">
@@ -25,10 +28,11 @@ const ToggleSection = ({ title, num, children }: ToggleSectionProps) => {
             <img src="/icons/arrow-right.png" alt="닫힘" className="arrow-icon"/>
           )}
         </span>
-        <h3>{num}. {title}</h3>
+        <h3><strong>{num}. {title}</strong></h3>
 
       </button>
       {isOpen && <div className="toggle-content">{children}</div>}
+    </div>
     </div>
   );
 };

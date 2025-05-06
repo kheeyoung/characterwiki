@@ -20,7 +20,7 @@ const CharacterPage = async ({ searchParams }: Props) => {
 
         <main className="content">
           <div className="title-section">
-            <h1 className="document-title">{name}</h1>
+            <h1 className="document-title"><strong>{name}</strong></h1>
           </div>
           <div className="document-tools">
             <a title="내 문서함에 추가" className="tool-button">⭐ <span>15</span></a>

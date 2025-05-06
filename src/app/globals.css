@@ -266,4 +266,51 @@ body {
   padding-bottom: 10px;
 }
 
+/*입력창*/
 
+.editor-wrapper {
+  border: 1px solid #ced4da; /* Bootstrap 기본 테두리 색 */
+  border-radius: 0.375rem;    /* Bootstrap 기본 둥글기 */
+  padding: 8px;
+  background: white;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+
+/* TipTap 내부 ProseMirror가 포커스될 때 효과 */
+.editor-wrapper:has(.ProseMirror-focused) {
+  border-color: #86b7fe; /* Bootstrap 포커스 테두리 */
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25); /* Bootstrap 포커스 그림자 */
+}
+
+
+.editor-wrapper .toolbar {
+  margin-bottom: 8px;
+}
+
+.editor-area {
+  min-height: 200px;
+  outline: none;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+
+.editor-area {
+  border: none !important;     /* 내부 테두리 제거 */
+  outline: none !important;    /* 포커스 테두리 제거 */
+  padding: 8px;
+  min-height: 150px;
+  font-size: 16px;
+  line-height: 1.5;
+  background: transparent;
+}
+.editor-area:focus {
+  outline: none !important;
+  box-shadow: none !important; /* 혹시 그림자 효과가 있다면 제거 */
+}
+
+.ProseMirror:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}

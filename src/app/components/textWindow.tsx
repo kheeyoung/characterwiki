@@ -14,6 +14,7 @@ import etcDTO from '@/dto/etcDTO';
 import { savePersonality } from "@/service/profileService";
 
 
+
 interface TiptapProps<T> {
   id: string;
   dto: T;
@@ -50,19 +51,38 @@ export const PerTextWindow = ({ id, dto }: TiptapProps<personalityDTO>) => {
 
 
   return (
-    <div style={{ width: '80%', height: '100%', padding : '10px' ,margin: '10px auto', backgroundColor: '#eee' }}>
-        <input type="text" value={keyWord} onChange={(e) => setKeyword(e.target.value)}
-        style={{ width: '99%', marginBottom: '5px', border: '1px solid black' }}/>
+    <div style={{ padding: "10px",backgroundColor: '#eee' }}>
+      <div>
+      <label htmlFor="exampleFormControlInput1" className="form-label"><strong>성격 키워드</strong></label>
+      <input type="text" className="form-control" id="keywordInput" placeholder="KeyWord" 
+      value={keyWord} onChange={(e) => setKeyword(e.target.value)}></input>
+      </div>
 
-        <input type="text" value={oneWord} onChange={(e) => setOneword(e.target.value)}
-        style={{ width: '99%', marginBottom: '5px', border: '1px solid black' }}/>
-
-        <ToolBar editor={editor} />
+      <div style={{ marginTop: '16px' }}>
+      <label htmlFor="exampleFormControlInput1" className="form-label"><strong>한마디</strong></label>
+      <input type="text" className="form-control" id="keywordInput" placeholder="KeyWord" 
+      value={oneWord} onChange={(e) => setOneword(e.target.value)}></input>
+      </div>
+      
+      <div style={{ marginTop: '16px' }} >
+      <label htmlFor="exampleFormControlTextarea1" className="form-label"><strong>설명</strong></label>
+      <div className="editor-wrapper">
+      <ToolBar editor={editor} />
         <EditorContent id="content" editor={editor} 
             onClick={() => editor?.commands.focus()}
-            style={{ height: '100%', overflowY: 'auto', border: '1px solid black'}}
+            className="editor-area"
         />
-        <button onClick={async () => {
+      </div>
+      
+      </div>
+      
+
+
+        
+
+
+        
+        <button className='btn btn-dark' style = {{ marginTop:"10px" }}onClick={async () => {
           const updatedPersonality = new personalityDTO(dto.id, keyWord, oneWord, editorContent);
           await savePersonality(id, "public", updatedPersonality)
         }}>저장</button>
