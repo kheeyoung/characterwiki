@@ -35,15 +35,8 @@ export async function Personality({ params, num }: PageProps) {
 
                     {pl.map((pd, index) => (
                         console.log(pd.keyWord),
-                        <ToggleSection title={pd.keyWord} num={"1." + index} key={"1." + index}>
+                        <ToggleSection title={pd.title} num={"1." + index} key={"1." + index}>
                             <div id="content" className="toggle-content">
-                                <blockquote className="textBox">
-                                    <div>
-                                        <strong data-v-68242208="">{pd.oneWord}</strong>
-                                    </div>
-                                </blockquote>
-
-                            
                                     <HtmlContent htmlString={pd.content} />
                             </div>
                         </ToggleSection>
@@ -75,12 +68,13 @@ export async function Etc({ params }: PageProps) {
         <div className="container">
             <div className="box">
             <a href="#s-2"></a>
+            
                 <ToggleSection title="기타사항" num="2" key="2">
-                    {pl.map(([title, content], index) => (
-                        <ToggleSection title={title} num={"2." + index} key={"2." + index}>
+                {pl.map((pd, index) => (
+                        console.log(pd.keyWord),
+                        <ToggleSection title={pd.title} num={"2." + index} key={"2." + index}>
                             <div id="content" className="toggle-content">
-                                <HtmlContent htmlString={content} />
-                                
+                                    <HtmlContent htmlString={pd.content} />
                             </div>
                         </ToggleSection>
 

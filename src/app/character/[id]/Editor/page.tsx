@@ -1,12 +1,11 @@
 'use server';
 
 import '../profile.css';
-import PublicProfileEd from './publicProfileEd';
-import { getCharacter, getPersonality } from "@/service/profileService";
+import ProfileEd from './ProfileEd';
+import { getCharacter, getPersonality,getEtc } from "@/service/profileService";
 import Loading from "../loading";
-import { PerTextWindow } from "../../../components/textWindow";
-import personalityDTO from '@/dto/personalityDTO';
-import PublicDocEd from './publicDocEd';
+import DocEd from './DocEd';
+import ToggleSection from '@/app/components/toggle';
 
 type Props = {
   searchParams: {
@@ -24,13 +23,19 @@ export default async function Editor({ searchParams }: Props) {
   //데이터 받아오기
   const PDRawData = await getCharacter(id, 0);
   const PerRawData = await getPersonality(id, 1);
-  if (!PDRawData || !PerRawData) {
-    return <div><Loading /></div>;
-  }
+  const EtcRawData = await getEtc(id, 2);
+  const PrivatePDRawData = await getCharacter(id, 1);
+  const PrivatePerRawData = await getPersonality(id, 2);
+  const PrivateEtcRawData = await getEtc(id, 1);
+  
 
   // JSON 직렬화 가능한 형태로 변환
   const pd = JSON.parse(JSON.stringify(PDRawData));
   const per = JSON.parse(JSON.stringify(PerRawData));
+  const Epd=JSON.parse(JSON.stringify(EtcRawData));
+  const Ppd = JSON.parse(JSON.stringify(PrivatePDRawData));
+  const Pper = JSON.parse(JSON.stringify(PrivatePerRawData));
+  const PEpd=JSON.parse(JSON.stringify(PrivateEtcRawData));
 
 
   return (
@@ -38,17 +43,51 @@ export default async function Editor({ searchParams }: Props) {
       <main className="content">
         <div style={{ marginTop: "16px", marginBottom: "16px" }}>
           <div style={{ marginLeft: "10px", marginRight: "10px" }}>
-            <h2><strong>공개 프로필 수정</strong></h2>
+            <ToggleSection title={'공개 프로필 수정'} num={'0'} children={
+              <ProfileEd pd={pd} id={id} isPublic='public'/>
+            }  />
           </div>
-          <PublicProfileEd pd={pd} id={id} />
-        </div>
-        <div style={{ marginTop: "16px", marginBottom: "16px" }}>
-          <div style={{ marginLeft: "10px", marginRight: "10px" }}>
-            <h2><strong>공개 성격 수정</strong></h2>
-          </div>
-          <PublicDocEd per={per} id={id} />
         </div>
 
+        <div style={{ marginTop: "16px", marginBottom: "16px" }}>
+          <div style={{ marginLeft: "10px", marginRight: "10px" }}>
+            <ToggleSection title={'공개 성격 수정'} num={'1'} children={
+              <DocEd per={per} id={id} isPublic='public' type='personality'/>
+            }  />
+          </div>
+        </div>
+
+        <div style={{ marginTop: "16px", marginBottom: "16px" }}>
+          <div style={{ marginLeft: "10px", marginRight: "10px" }}>
+            <ToggleSection title={'공개 기타설정 수정'} num={'2'} children={
+              <DocEd per={Epd} id={id} isPublic='public' type='etc'/>
+            }  />
+          </div>
+        </div>
+        
+        <div style={{ marginTop: "16px", marginBottom: "16px" }}>
+          <div style={{ marginLeft: "10px", marginRight: "10px" }}>
+            <ToggleSection title={'비공개 프로필 수정'} num={'3'} children={
+              <ProfileEd pd={Ppd} id={id} isPublic='private'/>
+            }  />
+          </div>
+        </div>
+
+        <div style={{ marginTop: "16px", marginBottom: "16px" }}>
+          <div style={{ marginLeft: "10px", marginRight: "10px" }}>
+            <ToggleSection title={'비공개 성격 수정'} num={'4'} children={
+              <DocEd per={Pper} id={id} isPublic='private' type='personality'/>
+            }  />
+          </div>
+        </div>
+
+        <div style={{ marginTop: "16px", marginBottom: "16px" }}>
+          <div style={{ marginLeft: "10px", marginRight: "10px" }}>
+            <ToggleSection title={'비공개 기타설정 수정'} num={'5'} children={
+              <DocEd per={PEpd} id={id} isPublic='private' type='etc'/>
+            }  />
+          </div>
+        </div>
       </main>
     </div>
   );

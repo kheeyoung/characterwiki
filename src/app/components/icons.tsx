@@ -1,12 +1,14 @@
 import React from 'react';
-import { Editor } from '@tiptap/react';
+import { Editor, useEditor } from '@tiptap/react';
 import Image from '@tiptap/extension-image';
 import StarterKit from '@tiptap/starter-kit';
 import Heading from '@tiptap/extension-heading';
+import { TextBox } from '@/app/components/extensions/TextBox';
 
 interface IconProps {
   editor: Editor;
 }
+
 
 function IconButton({
   onClick,
@@ -101,6 +103,26 @@ const AddPhoto = ({ editor }: IconProps) => (
   />
 );
 
+const AddBox = ({ editor }: IconProps) => (
+  <IconButton
+    onClick={() => {
+      if (!editor) return
+      editor.commands.insertContent({
+        type: 'textBox',
+        content: [
+          {
+            type: 'text',
+            text: '강조하고 싶은말',
+          },
+        ],
+      })
+    }}
+    src="/icons/box.png"
+    alt="Add Box"
+  />
+)
+
+
 export const Icon = {
   H1,
   H2,
@@ -111,4 +133,5 @@ export const Icon = {
   Code,
   Quote,
   AddPhoto,
+  AddBox
 };

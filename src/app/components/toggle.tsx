@@ -18,7 +18,7 @@ const ToggleSection = ({ title, num, children }: ToggleSectionProps) => {
 
 
   return (
-    <div style={{ marginTop: "16px" }}>
+    <div style={{ marginTop: "16px" , marginBottom: "50px" }}>
     <div className="toggle-section">
       <button className="toggle-button" onClick={toggle}>
         <span className="arrow">

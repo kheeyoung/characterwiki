@@ -15,6 +15,7 @@ function ToolBar({ editor }: ToolBarProps) {
       <Icon.Italic editor={editor} />
       <Icon.Strikethrough editor={editor} />
       <Icon.AddPhoto editor={editor} />
+      <Icon.AddBox editor={editor} />
     </div>
 
   );

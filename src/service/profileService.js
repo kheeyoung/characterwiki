@@ -1,11 +1,11 @@
 
 import { doc, getDoc, collection, query, getDocs,setDoc, deleteDoc } from "firebase/firestore";
 import { getStorage,ref, uploadBytes, getDownloadURL } from 'firebase/storage';
-import { Editor } from '@tiptap/react';
 
 import pd from '../dto/profileDTO';
 import { db } from '../lib/firebase';
-import personalityDTO from "@/dto/personalityDTO";
+import personalityDTO from "@/dto/DocDTO";
+import DocDTO from "@/dto/DocDTO";
 
 
 export async function getwiki() {
@@ -52,15 +52,12 @@ export async function getCharacter(id, num) {
       c.belongings2, 
       c.belongings3 
     );
-
-   
     return result;
   } else {
-    console.log("No such document!");
+    return new pd("","","","","","","","","","","","", "", "" );
   }
 
 }
-
 
 export async function getPersonality(id, num) {
   if (!id || typeof id !== "string") {
@@ -74,8 +71,7 @@ export async function getPersonality(id, num) {
   querySnapshot.forEach((doc) => {
     result.push(new personalityDTO(
       doc.id,
-      doc.data().keyword,
-      doc.data().oneWord,
+      doc.data().title,
       doc.data().content, 
     ));
   });
@@ -84,26 +80,25 @@ export async function getPersonality(id, num) {
 
 }
 
-export async function savePersonality (id, isPublic, pd) {
+export async function saveDoc (id, isPublic, pd, type) {
     try {
     
-      const docRef = doc(db, "wiki", id, isPublic, "document", "personality", pd.id);
+      const docRef = doc(db, "wiki", id, isPublic, "document", type, pd.id);
       await setDoc(docRef, { 
-        keyword: pd.keyWord,
-        oneWord: pd.oneWord,
+        title: pd.title,
         content: pd.content
        });
       
       alert('저장 성공!');
     } catch (err) {
       console.error('저장 실패:', err);
-      alert('저장에 실패했습니다.'+pd.keyword);
+      alert('저장에 실패했습니다.'+pd.title);
     }
 }
 
-export async function deletePersonality(id, isPublic, pdID) {
+export async function deleteWikiDoc(id, isPublic, pdID, type) {
   try{
-    const docRef = doc(db, "wiki", id, isPublic, "document", "personality", pdID);
+    const docRef = doc(db, "wiki", id, isPublic, "document", type, pdID);
     await deleteDoc(docRef);
     alert('삭제 성공!');
   }
@@ -112,7 +107,6 @@ export async function deletePersonality(id, isPublic, pdID) {
     alert('삭제에 실패했습니다.');
   }
 }
-
 
 export async function getEtc(id, num) {
   if (!id || typeof id !== "string") {
@@ -124,11 +118,11 @@ export async function getEtc(id, num) {
 
   const querySnapshot = await getDocs(q);
   querySnapshot.forEach((doc) => {
-    console.log(doc.data);
-    result.push([
+    console.log(doc.data().content);
+    result.push(new DocDTO(
+      doc.id,
       doc.data().title,
-      doc.data().content,
-    ]
+      doc.data().content)
     );
    
   });
@@ -151,7 +145,6 @@ export async function handleImageUpload(e,path,onSuccess){
     if (onError) onError(error);
   }
 }
-
 
 //파이어베이스에 이미지 업로드
 export async function uploadImage(file,path) {

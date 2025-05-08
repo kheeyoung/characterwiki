@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { saveProfile, handleImageUpload } from "@/service/profileService";
 
-export default function PublicProfileEd({ pd, id }: { pd: any; id: string }) {
+export default function ProfileEd({ pd, id, isPublic}: { pd: any; id: string, isPublic: string }) {
   // 상태 관리: pd 데이터를 초기값으로 설정
   const [profileData, setProfileData] = useState(pd);
 
@@ -183,7 +183,7 @@ export default function PublicProfileEd({ pd, id }: { pd: any; id: string }) {
         </table>
         <button
           className="btn btn-dark"
-          onClick={() => saveProfile(id, "public", profileData)}
+          onClick={() => saveProfile(id, isPublic, profileData)}
         >
           공개 프로필 저장
         </button>
