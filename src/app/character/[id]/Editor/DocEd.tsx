@@ -3,13 +3,17 @@
 import React, { useState } from 'react';
 import DocDTO from '@/dto/DocDTO';
 import { TextWindow } from "../../../components/textWindow";
-import { saveDoc, deleteWikiDoc } from "@/service/profileService";
+import { deleteWikiDoc } from "@/service/profileService";
 
 export default function DocEd({ per: initialPer, id, isPublic, type }: { per: DocDTO[]; id: string, isPublic: string, type: string }) {
   const [per, setPer] = useState<DocDTO[]>(initialPer);
 
+  const makeID = () => {
+    return Date.now().toString(); 
+  }
+
   const addNewDoc = () => {
-    setPer([...per, new DocDTO(crypto.randomUUID(), "키워드", "설명")]);
+    setPer([...per, new DocDTO(makeID(), "키워드", "설명")]);
   };
 
   const removeDoc = (idToRemove: string) => {

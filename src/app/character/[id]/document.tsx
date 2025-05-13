@@ -12,14 +12,16 @@ import HtmlContent from '../../components/HtmlContent';
 
 interface PageProps {
     params: string;
-    num: string;
+    isPublic: boolean;
+    num : string;
 }
 
-export async function Personality({ params, num }: PageProps) {
+export async function Personality({ params, isPublic, num }: PageProps) {
     const id = await params;
-    const n= await num;
+    const isP= await isPublic;
+    const n = await num;
     
-    const pl = await getPersonality(id, n);
+    const pl = await getPersonality(id, isP);
 
     if (!pl) {
         return <div><Loading /></div>;
@@ -53,16 +55,17 @@ export async function Personality({ params, num }: PageProps) {
     );
 }
 
-export async function Etc({ params }: PageProps) {
+export async function Etc({ params, isPublic, num }: PageProps) {
     const id = await params;
-
-    const pl = await getEtc(id, 2);
+    const isP= await isPublic;
+    const n = await num;
+    const pl = await getEtc(id, isP);
 
     if (!pl) {
         return <div><Loading /></div>;
     }
 
-    var n = 1;
+
     return (
 
         <div className="container">

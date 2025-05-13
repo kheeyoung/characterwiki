@@ -1,8 +1,10 @@
 "use server";
 
 import Link from "next/link";
-import {Personality, Etc} from "./document";
+import { Personality, Etc } from "./document";
 import PublicProfile from "./profile";
+import { getisOpen } from "@/service/profileService";
+
 
 type Props = {
   searchParams: {
@@ -14,6 +16,7 @@ type Props = {
 
 const CharacterPage = async ({ searchParams }: Props) => {
   const { name, id } = await searchParams;
+  const isOpen = await getisOpen(id);
   return (
     <div>
       <div className="document-header">
@@ -28,9 +31,10 @@ const CharacterPage = async ({ searchParams }: Props) => {
               pathname: `/character/${id}/Editor`,
               query: {
                 id: id
-              }}}>✏️ 편집</Link>
-                          
-     
+              }
+            }}>✏️ 편집</Link>
+
+
             <button className="tool-button more-button" title="더 보기">⋮</button>
           </div>
 
@@ -42,9 +46,17 @@ const CharacterPage = async ({ searchParams }: Props) => {
               </li>
             </ul>
           </div>
-          <PublicProfile params={id as string}  />
-          <Personality params={id as string} num ="1"/>
-          <Etc params={id as string} num ="1"/>
+          <PublicProfile params={id as string} isPublic={true} />
+          <Personality params={id as string} isPublic={true} num="1"/>
+          <Etc params={id as string} isPublic={true} num="1"/>
+          
+            {isOpen && (
+              <div>
+              <PublicProfile params={id as string} isPublic={false}/>
+              <Personality params={id as string} isPublic={false} num="2"/>
+              <Etc params={id as string} isPublic={false} num="2"/>
+              </div>
+            )}
           
         </main>
 

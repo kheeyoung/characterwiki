@@ -5,12 +5,14 @@ import './profile.css';
 
 interface PageProps {
     params: string;
+    isPublic: boolean;
   }
 
-export default async function PublicProfile({ params }: PageProps) {
+export default async function PublicProfile({ params, isPublic }: PageProps) {
     const id = await params;
+    const isP = await isPublic;
     
-    const pd = await getCharacter(id,0);
+    const pd = await getCharacter(id,isP);
    
     if (!pd) {
         return <div><Loading /></div>;
