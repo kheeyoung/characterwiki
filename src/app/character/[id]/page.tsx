@@ -3,27 +3,28 @@
 import Link from "next/link";
 import { Personality, Etc } from "./document";
 import PublicProfile from "./profile";
-import { getisOpen } from "@/service/profileService";
+import { getPersonalWiki } from "@/service/profileService";
 
 
 type Props = {
-  searchParams: {
-    params: { id: string };
-    name?: string;
-    id?: string;
-  }
+  params: {
+    id: string;
+  };
 };
 
-const CharacterPage = async ({ searchParams }: Props) => {
-  const { name, id } = await searchParams;
-  const isOpen = await getisOpen(id);
+const CharacterPage = async ({ params }: Props) => {
+  const { id } = await params;
+  const pd = await getPersonalWiki(id);
+
+
+
   return (
     <div>
       <div className="document-header">
 
         <main className="content">
           <div className="title-section">
-            <h1 className="document-title"><strong>{name}</strong></h1>
+            <h1 className="document-title"><strong>{pd?.name}</strong></h1>
           </div>
           <div className="document-tools">
             <a title="내 문서함에 추가" className="tool-button">⭐ <span>15</span></a>
@@ -34,8 +35,8 @@ const CharacterPage = async ({ searchParams }: Props) => {
               }
             }}>✏️ 편집</Link>
 
-
             <button className="tool-button more-button" title="더 보기">⋮</button>
+
           </div>
 
           <div className="document-category">
@@ -47,17 +48,18 @@ const CharacterPage = async ({ searchParams }: Props) => {
             </ul>
           </div>
           <PublicProfile params={id as string} isPublic={true} />
-          <Personality params={id as string} isPublic={true} num="1"/>
-          <Etc params={id as string} isPublic={true} num="1"/>
-          
-            {isOpen && (
-              <div>
-              <PublicProfile params={id as string} isPublic={false}/>
-              <Personality params={id as string} isPublic={false} num="2"/>
-              <Etc params={id as string} isPublic={false} num="2"/>
-              </div>
-            )}
-          
+          <Personality params={id as string} isPublic={true} num="1" />
+          <Etc params={id as string} isPublic={true} num="1" />
+
+          {pd?.privateOnOff && (
+            <div>
+
+              <PublicProfile params={id as string} isPublic={false} />
+              <Personality params={id as string} isPublic={false} num="2" />
+              <Etc params={id as string} isPublic={false} num="2" />
+            </div>
+          )}
+
         </main>
 
       </div>

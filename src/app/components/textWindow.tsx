@@ -28,8 +28,8 @@ export const TextWindow = ({ id, dto, isPublic, type }: TiptapProps<DocDTO>) => 
       StarterKit,
       Highlight,
       Image.configure({ inline: true, allowBase64: true }),
-      
     ],
+    immediatelyRender: false,
   });
 
   const [title, setTitle] = useState(dto.title);

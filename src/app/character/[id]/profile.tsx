@@ -3,10 +3,12 @@ import { getCharacter } from "@/service/profileService";
 import Loading from "./loading";
 import './profile.css';
 
+
+
 interface PageProps {
-    params: string;
-    isPublic: boolean;
-  }
+  params: string;
+  isPublic: boolean;
+}
 
 export default async function PublicProfile({ params, isPublic }: PageProps) {
     const id = await params;

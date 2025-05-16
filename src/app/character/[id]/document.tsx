@@ -36,7 +36,7 @@ export async function Personality({ params, isPublic, num }: PageProps) {
 
 
                     {pl.map((pd, index) => (
-                        console.log(pd.keyWord),
+                       
                         <ToggleSection title={pd.title} num={"1." + index} key={"1." + index}>
                             <div id="content" className="toggle-content">
                                     <HtmlContent htmlString={pd.content} />
@@ -74,7 +74,7 @@ export async function Etc({ params, isPublic, num }: PageProps) {
             
                 <ToggleSection title="기타사항" num="2" key="2">
                 {pl.map((pd, index) => (
-                        console.log(pd.keyWord),
+                        
                         <ToggleSection title={pd.title} num={"2." + index} key={"2." + index}>
                             <div id="content" className="toggle-content">
                                     <HtmlContent htmlString={pd.content} />

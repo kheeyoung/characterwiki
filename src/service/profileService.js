@@ -1,5 +1,5 @@
 
-import { doc, getDoc, collection, query, getDocs, setDoc, deleteDoc, where } from "firebase/firestore";
+import { doc, getDoc, collection, query, getDocs, setDoc, deleteDoc } from "firebase/firestore";
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 
 import pd from '../dto/profileDTO';
@@ -118,13 +118,15 @@ export async function saveDoc(id, isPublic, pd, type) {
 }
 
 export async function deleteWikiDoc(id, isPublic, pdID, type) {
+
+  const docRef = doc(db, "wiki", id, isPublic, "document", type, pdID);
+
   try {
-    const docRef = doc(db, "wiki", id, isPublic, "document", type, pdID);
     await deleteDoc(docRef);
-    alert('삭제 성공!');
-  }
-  catch (err) {
-    alert('삭제에 실패했습니다.');
+    alert("삭제 성공!");
+  } catch (err) {
+    alert("삭제에 실패했습니다.");
+    console.error("Error deleting document: ", err);
   }
 }
 
@@ -186,18 +188,20 @@ export async function getPersonalWiki(id) {
 
   try{
     const docSnap = await getDoc(docRef);
-    console.log(docSnap.color);
+    
+    
     return new BaiscDTO(
       docSnap.data().color,
       docSnap.data().name,
       docSnap.data().talent,
-      docSnap.data().privateOnOff
+      docSnap.data().private
     );
   }catch (error) {}
  
 }
 
 export async function getisOpen(id) {
+
   const docRef = doc(db, 'wiki', id);
   const docSnap = await getDoc(docRef);
 
@@ -235,3 +239,16 @@ export async function saveBaisc(id, bd) {
     alert('저장에 실패했습니다.');
   }
 } 
+
+export async function deleteBaisc(id) {
+
+  const docRef = doc(db, "wiki", id);
+
+  try {
+    await deleteDoc(docRef);
+    alert("삭제 성공!");
+  } catch (err) {
+    alert("삭제에 실패했습니다.");
+    console.error("Error deleting document: ", err);
+  }
+}

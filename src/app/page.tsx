@@ -27,14 +27,7 @@ export default async function Home() {
                       <div className="character" key={id}>
                       <div className="role" style={{ backgroundColor: color }}>{talent}</div>
                       <div className="name">
-                        <Link href={{
-                          pathname: `/character/${id}`,
-                          query: {
-                            name: name,
-                            id: id
-                          }}}
-                          
-                          >{name}</Link>
+                        <Link href={`/character/${id}`}>{name}</Link>
                       </div>
                      
                     </div>

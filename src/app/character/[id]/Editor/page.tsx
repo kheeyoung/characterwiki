@@ -16,7 +16,6 @@ type Props = {
 
 export default async function Editor({ searchParams }: Props) {
   const id = (await searchParams).id; // 쿼리 파라미터에서 id 가져오기
-  const state=await getisOpen(id);
 
   if (!id) {
     return <div><Loading /></div>;
@@ -44,11 +43,11 @@ export default async function Editor({ searchParams }: Props) {
   return (
     <div className="document-header">
       <main className="content">
-      <ToggleSection title={'기본 설정'} num={'0'} children={
+        <ToggleSection title={'기본 설정'} num={'0'} children={
           <div>
             <div style={{ marginTop: "16px", marginBottom: "16px" }}>
               <div style={{ marginLeft: "10px", marginRight: "10px" }}>
-              <BaiscOption id={id} state={state} bd={bd} /> 
+              <BaiscOption id={id} bd={bd} /> 
               </div>
             </div>      
           </div>
@@ -106,6 +105,7 @@ export default async function Editor({ searchParams }: Props) {
                 } />
               </div>
             </div>
+            
           </div>
         } />
       </main>

@@ -27,7 +27,7 @@ export default function DocEd({ per: initialPer, id, isPublic, type }: { per: Do
           <div key={pd.id} style={{ marginTop: "16px", marginBottom: "16px", paddingTop: "10px" }}>
             <button className='btn btn-dark btn-sm' style={{ float: 'inline-end',margin: '10px' }} onClick={() => {
               removeDoc(pd.id);
-              deleteWikiDoc(id, isPublic, pd.id); // 서버에서 삭제
+              deleteWikiDoc(id, isPublic, pd.id,type ); // 서버에서 삭제
             }}>삭제</button>
             <TextWindow id={id} dto={pd} isPublic={isPublic} type={type}/>
           </div>
