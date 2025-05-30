@@ -1,4 +1,4 @@
-import '../app/main.css';
+
 
 export default function Footer() {
     return (

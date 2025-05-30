@@ -1,8 +1,6 @@
 
 import { getEtc, getPersonality } from "@/service/profileService";
-
-import Loading from "./loading";
-import './profile.css';
+import Loading from "../../components/loading";
 import ToggleSection from "../../components/toggle";
 import HtmlContent from '../../components/HtmlContent'; 
 
@@ -37,9 +35,9 @@ export async function Personality({ params, isPublic, num }: PageProps) {
 
                     {pl.map((pd, index) => (
                        
-                        <ToggleSection title={pd.title} num={"1." + index} key={"1." + index}>
+                        <ToggleSection title={pd.title ?? ""} num={"1." + index} key={"1." + index}>
                             <div id="content" className="toggle-content">
-                                    <HtmlContent htmlString={pd.content} />
+                                    <HtmlContent htmlString={pd.content ?? ""} />
                             </div>
                         </ToggleSection>
 
@@ -75,9 +73,9 @@ export async function Etc({ params, isPublic, num }: PageProps) {
                 <ToggleSection title="기타사항" num="2" key="2">
                 {pl.map((pd, index) => (
                         
-                        <ToggleSection title={pd.title} num={"2." + index} key={"2." + index}>
+                        <ToggleSection title={pd.title ?? ""} num={"2." + index} key={"2." + index}>
                             <div id="content" className="toggle-content">
-                                    <HtmlContent htmlString={pd.content} />
+                                    <HtmlContent htmlString={pd.content ?? ""} />
                             </div>
                         </ToggleSection>
 

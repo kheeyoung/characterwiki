@@ -1,8 +1,6 @@
 
 import { getCharacter } from "@/service/profileService";
-import Loading from "./loading";
-import './profile.css';
-
+import Loading from "../../components/loading";
 
 
 interface PageProps {

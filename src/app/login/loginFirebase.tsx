@@ -2,6 +2,7 @@
 
 import React from 'react';
 import {login} from "@/service/loginService";
+import '../style/globals.css'
 
 export default function LoginFirebase() {
     const [id, setId] = React.useState('');

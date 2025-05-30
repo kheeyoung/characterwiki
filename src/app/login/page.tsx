@@ -1,36 +1,48 @@
 'use client';
+
 import { useEffect, useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from '@/lib/firebase';
 import LoginFirebase from "./loginFirebase";
 import MyPage from "./myPage";
-
-
-
 import type { User } from "firebase/auth";
+import { getIdbyUid } from "@/service/profileService";
+import '../style/main.css';
+import Loading from "../components/loading";
 
 export default function Login() {
-    const [user, setUser] = useState<User | null>(null);
-    const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState<User | null>(null);
+  const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (user) => {
-            setUser(user);
-            setLoading(false);
-            console.log("Login : ",user?.email);
-        });
+  // 로그인 상태 확인
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setUser(user);
+      setLoading(false);
+    });
 
-        return () => unsubscribe();
-    }, []);
+    return () => unsubscribe();
+  }, []);
 
-    
-    if (loading) return <div>로딩 중...</div>;
 
+
+  if (loading) return <Loading/>;
+
+  if (!user) {
     return (
-        <div className="document-header">
-            <main className="content">
-                {user ? <MyPage user={user} /> : <LoginFirebase />}
-            </main>
-        </div>
+      <div className="document-header">
+        <main className="content">
+          <LoginFirebase />
+        </main>
+      </div>
     );
+  }
+
+  return (
+    <div className="document-header">
+      <main className="content">
+        <MyPage user={user}/>
+      </main>
+    </div>
+  );
 }

@@ -1,6 +1,6 @@
 import Header from './header';
 import Footer from './footer';
-import './main.css';
+import './style/main.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 

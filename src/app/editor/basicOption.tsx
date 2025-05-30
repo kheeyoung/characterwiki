@@ -3,14 +3,14 @@
 import { useEffect, useState } from 'react';
 import { onOffPrivate, saveBaisc, deleteBaisc } from "@/service/profileService";
 import BaiscDTO from '@/dto/baiscDTO';
-import { useEditor } from '@tiptap/react';
 
-interface BaiscOptionProps {
+
+interface BasicOptionProps {
   id: string;
   bd: BaiscDTO
 }
 
-export default function BaiscOption({ id, bd }: BaiscOptionProps) {
+export default function BasicOption({ id, bd }: BasicOptionProps) {
   const [BaiscData, setBaiscData] = useState<BaiscDTO>(bd);
   const [isOpen, setIsOpen] = useState(bd.privateOnOff);
 
@@ -79,7 +79,7 @@ export default function BaiscOption({ id, bd }: BaiscOptionProps) {
             <td className="label">비밀설정</td>
             <td className="value">
               <button className="btn btn-dark" onClick={() => {
-                onOffPrivate(id, isOpen);
+                onOffPrivate(id, isOpen ?? false);
                 setIsOpen(prev => !prev);
               }}>
                 비공개 설정 {isOpen ? 'Off' : 'On'}

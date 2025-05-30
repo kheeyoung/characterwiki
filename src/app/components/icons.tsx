@@ -1,9 +1,5 @@
 import React from 'react';
 import { Editor, useEditor } from '@tiptap/react';
-import Image from '@tiptap/extension-image';
-import StarterKit from '@tiptap/starter-kit';
-import Heading from '@tiptap/extension-heading';
-import { TextBox } from '@/app/components/extensions/TextBox';
 
 interface IconProps {
   editor: Editor;

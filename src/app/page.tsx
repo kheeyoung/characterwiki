@@ -1,5 +1,6 @@
 import { getwiki } from '../service/profileService';
-import './main.css';
+import './style/globals.css';
+
 import Link from 'next/link';
 
 
