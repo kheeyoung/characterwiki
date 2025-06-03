@@ -4,15 +4,11 @@ import { Personality, Etc } from "./document";
 import PublicProfile from "./profile";
 import { getPersonalWiki } from "@/service/profileService";
 import '../../style/profile.css';
+type PageParams = Promise<{ id: string }>;
 
-type Props = {
-  params: {
-    id: string;
-  };
-};
+export default async function CharacterPage({ params }: {params : PageParams}) {
 
-const CharacterPage = async ({ params }: Props) => {
-  const { id } = await params;
+  const { id } =await params;
   const pd = await getPersonalWiki(id);
 
 
@@ -58,4 +54,4 @@ const CharacterPage = async ({ params }: Props) => {
   );
 };
 
-export default CharacterPage;
+

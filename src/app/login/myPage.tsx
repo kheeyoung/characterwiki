@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import Editor from '../editor/page';
 import LoginFirebase from './loginFirebase';
-import { signOut } from 'firebase/auth';
+import { signOut, User } from 'firebase/auth';
 import { auth } from '@/lib/firebase';
 
 interface MyPageProps {
-    user: any;
+    user: User;
 }
 
 export default function MyPage({ user }: MyPageProps) {
@@ -14,7 +14,7 @@ export default function MyPage({ user }: MyPageProps) {
     if (user === null) { return <LoginFirebase />; }
 
     if (showEditor) {
-        return <Editor user={user}/>;
+        return <Editor />;
     }
 
     return (

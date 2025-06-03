@@ -2,14 +2,15 @@
 
 import { useState } from "react";
 import { saveProfile, handleImageUpload } from "@/service/profileService";
+import profileDTO from "@/dto/profileDTO";
 
-export default function ProfileEd({ pd, id, isPublic}: { pd: any; id: string, isPublic: string }) {
+export default function ProfileEd({ pd, id, isPublic}: { pd: profileDTO; id: string, isPublic: string }) {
   // 상태 관리: pd 데이터를 초기값으로 설정
   const [profileData, setProfileData] = useState(pd);
 
   // 입력값 변경 핸들러
   const handleInputChange = (field: string, value: string) => {
-    setProfileData((prev: any) => ({
+    setProfileData((prev) => ({
       ...prev,
       [field]: value,
     }));

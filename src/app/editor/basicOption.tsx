@@ -23,7 +23,7 @@ export default function BasicOption({ id, bd }: BasicOptionProps) {
     };
 
     fetchData();
-  }, [id]);
+  }, [id, bd]);
 
   const handleInputChange = (field: keyof BaiscDTO, value: string) => {
     setBaiscData(prev => ({

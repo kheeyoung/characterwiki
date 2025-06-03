@@ -1,6 +1,6 @@
 "use client";
 
-
+import Image from 'next/image';
 import { useState } from "react";
 
 interface ToggleSectionProps {
@@ -23,9 +23,9 @@ const ToggleSection = ({ title, num, children }: ToggleSectionProps) => {
       <button className="toggle-button" onClick={toggle}>
         <span className="arrow">
           {isOpen ? (
-            <img src="/icons/arrow-down.png" alt="열림" className="arrow-icon"/>
+            <Image src="/icons/arrow-down.png" alt="열림" className="arrow-icon"/>
           ) : (
-            <img src="/icons/arrow-right.png" alt="닫힘" className="arrow-icon"/>
+            <Image src="/icons/arrow-right.png" alt="닫힘" className="arrow-icon"/>
           )}
         </span>
         <h3><strong>{num}. {title}</strong></h3>

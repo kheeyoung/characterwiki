@@ -4,9 +4,7 @@ export async function login(id, pw) {
   const auth = getAuth();
   await setPersistence(auth, browserLocalPersistence);
   signInWithEmailAndPassword(auth, id, pw)
-    .then((userCredential) => {
-      const user = userCredential.user;
-      // 로그인 성공 → 원하는 페이지로 이동   
+    .then(() => { 
       window.location.href = '/';
     })
     .catch((error) => {

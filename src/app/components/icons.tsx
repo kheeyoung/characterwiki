@@ -1,5 +1,6 @@
 import React from 'react';
-import { Editor, useEditor } from '@tiptap/react';
+import { Editor } from '@tiptap/react';
+import Image from 'next/image';
 
 interface IconProps {
   editor: Editor;
@@ -17,7 +18,7 @@ function IconButton({
 }) {
   return (
     <button onClick={onClick}>
-      <img src={src} alt={alt} className="w-5 h-5" />
+      <Image src={src} alt={alt} className="w-5 h-5" />
     </button>
   );
 }

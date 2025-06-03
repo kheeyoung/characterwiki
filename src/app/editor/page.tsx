@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
-import { EditPage } from "./editPage"; // ✅ 중괄호 import 주의
+import { EditPage } from "./editPage"; 
 import {
   getIdbyUid,
   getCharacter,
@@ -13,25 +13,41 @@ import Loading from '../components/loading';
 import profileDTO from '@/dto/profileDTO';
 import DocDTO from '@/dto/DocDTO';
 import BaiscDTO from '@/dto/baiscDTO';
+import { getAuth, onAuthStateChanged, User } from 'firebase/auth';
 
-interface EditorProps {
-  user: any;
-}
+type CharacterData = {
+  pd: profileDTO;
+  per: DocDTO[];
+  Epd: DocDTO[];
+  Ppd: profileDTO;
+  Pper: DocDTO[];
+  PEpd: DocDTO[];
+  bd: BaiscDTO;
+};
 
-export default function Editor({ user }: EditorProps) {
-  console.log('User state :', user);
+export default function  Editor() {
+  const [user, setUser] = useState<User | null>(null);
+
+  useEffect(() => {
+    const auth = getAuth();
+    const unsub = onAuthStateChanged(auth, (u) => {
+      if (u) setUser(u);
+    });
+
+    return () => unsub();
+  }, []);
   const [loading, setLoading] = useState(true);
   const [id, setId] = useState('');
-  const [data, setData] = useState<any>(null);
+  const [data, setData] = useState<CharacterData | null>(null);
 
 
   useEffect(() => {
     const fetchData = async () => {
-      console.log(user);
-      const uid = user.uid;
+
+      const uid = user!.uid;
       const id = await getIdbyUid(uid);
       if (id === "") {
-        await makeCharacterDoc(user);
+        await makeCharacterDoc(user!);
         const [pd, per, Epd, Ppd, Pper, PEpd, bd] = [
           new profileDTO(),
           [new DocDTO()],

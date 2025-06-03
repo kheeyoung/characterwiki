@@ -1,7 +1,7 @@
 
 import { getCharacter } from "@/service/profileService";
 import Loading from "../../components/loading";
-
+import Image from 'next/image';
 
 interface PageProps {
   params: string;
@@ -36,10 +36,10 @@ export default async function PublicProfile({ params, isPublic }: PageProps) {
             </tr>
             <tr>
               <td colSpan={2} className="image-cell">
-                <img
+                <Image
                   className="profile-image"
-                  src={pd.bodyImage}
-                  alt={pd.bodyImage}
+                  src={pd.bodyImage ?? "/default-profile.png"}
+                  alt={pd.bodyImage ?? "profile image"}
                   loading="lazy"
                 />
               </td>

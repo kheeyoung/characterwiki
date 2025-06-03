@@ -6,7 +6,6 @@ import { auth } from '@/lib/firebase';
 import LoginFirebase from "./loginFirebase";
 import MyPage from "./myPage";
 import type { User } from "firebase/auth";
-import { getIdbyUid } from "@/service/profileService";
 import '../style/main.css';
 import Loading from "../components/loading";
 

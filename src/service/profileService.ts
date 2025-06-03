@@ -11,7 +11,7 @@ import BaiscDTO from "@/dto/baiscDTO";
 
 export async function getwiki() {
   const q = query(collection(db, 'wiki'));
-  const result: any[] = [];
+  const result: string[][] = [];
 
   const querySnapshot = await getDocs(q);
   querySnapshot.forEach((doc) => {
@@ -121,7 +121,8 @@ export async function saveDoc(id: string, isPublic: string, pd: personalityDTO, 
 
     alert('저장 성공!');
   } catch (err) {
-    alert('저장에 실패했습니다.' + pd.title);
+    alert('저장에 실패했습니다.');
+    console.error("Error saving document: ", err);
   }
 }
 
@@ -139,7 +140,7 @@ export async function deleteWikiDoc(id: string, isPublic: string, pdID: string, 
 }
 
 //이미지 선택
-export async function handleImageUpload(e: any, path: string, onSuccess: (url: string) => void) {
+export async function handleImageUpload(e: ChangeEvent<HTMLInputElement>, path: string, onSuccess: (url: string) => void) {
   const file = e.target.files?.[0];
   if (!file) return;
 
@@ -148,6 +149,7 @@ export async function handleImageUpload(e: any, path: string, onSuccess: (url: s
     onSuccess(url);
   } catch (error) {
     alert("이미지 업로드에 실패했습니다.");
+    console.error("Error uploading image: ", error);
   }
 }
 
@@ -165,6 +167,8 @@ export async function uploadImage(file: File, path: string) {
 
 //프로필 저장
 import profileDTO from '../dto/profileDTO';
+import { User } from "firebase/auth";
+import { ChangeEvent } from "react";
 
 export async function saveProfile(id: string, isPublic: string, pd: profileDTO) {
   if (!id) return;
@@ -212,6 +216,7 @@ export async function getPersonalWiki(id: string) {
       return new BaiscDTO();
     }
   } catch (error) {
+    console.error("Error getting personal wiki: ", error);
     return new BaiscDTO();
   }
 
@@ -239,6 +244,7 @@ export async function onOffPrivate(id: string, state: boolean) {
   }
   catch (err) {
     alert('저장에 실패했습니다.');
+    console.error("Error updating privacy setting: ", err);
   }
 }
 
@@ -253,6 +259,7 @@ export async function saveBaisc(id: string, bd: BaiscDTO) {
     alert('저장 성공!');
   }
   catch (err) {
+    console.error("Error saving basic info: ", err);
     alert('저장에 실패했습니다.');
   }
 }
@@ -276,12 +283,13 @@ export async function getIdbyUid(uid: string) {
     const doc = querySnapshot.docs[0];
     return doc.id;
   } catch (error) {
-    console.log("오류 발생: " + (error as any).message);
+    console.error("Error getting document by UID: ", error);
+ 
     return "";
   }
 }
 
-export async function makeCharacterDoc(user: any) {
+export async function makeCharacterDoc(user: User) {
   
   try {
     //id 값 생성하기 

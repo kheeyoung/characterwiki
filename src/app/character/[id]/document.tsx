@@ -53,10 +53,10 @@ export async function Personality({ params, isPublic, num }: PageProps) {
     );
 }
 
-export async function Etc({ params, isPublic, num }: PageProps) {
+export async function Etc({ params, isPublic }: PageProps) {
     const id = await params;
     const isP= await isPublic;
-    const n = await num;
+    
     const pl = await getEtc(id, isP);
 
     if (!pl) {
