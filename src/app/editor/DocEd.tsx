@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useState } from 'react';
-import DocDTO from '@/dto/DocDTO';
+import DocDTO from '../../dto/DocDTO';
 import { TextWindow } from "../components/textWindow";
-import { deleteWikiDoc } from "@/service/profileService";
+import { deleteWikiDoc } from "../../service/profileService";
 
 export default function DocEd({ per: initialPer, id, isPublic, type }: { per: DocDTO[]; id: string, isPublic: string, type: string }) {
   const [per, setPer] = useState<DocDTO[]>(initialPer);

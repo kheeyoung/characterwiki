@@ -1,13 +1,13 @@
 
-import BaiscDTO from "@/dto/baiscDTO";
+import BaiscDTO from "../../dto/baiscDTO";
 import ToggleSection from "../components/toggle";
 import BasicOption from "./basicOption";
 import DocEd from "./DocEd";
 import ProfileEd from "./ProfileEd";
-import "@/app/style/doc.css";
-import "@/app/style/profile.css";
+import "../../app/style/doc.css";
+import "../../app/style/profile.css";
 import profileDTO from "@/dto/profileDTO";
-import DocDTO from "@/dto/DocDTO";
+import DocDTO from "../../dto/DocDTO";
 
 export function EditPage({
   id,

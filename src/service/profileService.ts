@@ -4,9 +4,9 @@ import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 
 import pd from '../dto/profileDTO';
 import { db } from '../lib/firebase';
-import personalityDTO from "@/dto/DocDTO";
-import DocDTO from "@/dto/DocDTO";
-import BaiscDTO from "@/dto/baiscDTO";
+import personalityDTO from "../dto/DocDTO";
+import DocDTO from "../dto/DocDTO";
+import BaiscDTO from "../dto/baiscDTO";
 
 
 export async function getwiki() {

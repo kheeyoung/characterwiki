@@ -1,5 +1,5 @@
 import { signInWithEmailAndPassword, onAuthStateChanged, getAuth,setPersistence, browserLocalPersistence } from 'firebase/auth';
-import { auth } from '@/lib/firebase';
+import { auth } from '../../lib/firebase';
 export async function login(id, pw) {
   const auth = getAuth();
   await setPersistence(auth, browserLocalPersistence);

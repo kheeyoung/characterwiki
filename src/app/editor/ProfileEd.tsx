@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { saveProfile, handleImageUpload } from "@/service/profileService";
-import profileDTO from "@/dto/profileDTO";
+import { saveProfile, handleImageUpload } from "../../service/profileService";
+import profileDTO from "../../dto/profileDTO";
 
 export default function ProfileEd({ pd, id, isPublic}: { pd: profileDTO; id: string, isPublic: string }) {
   // 상태 관리: pd 데이터를 초기값으로 설정

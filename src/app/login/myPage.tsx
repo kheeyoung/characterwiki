@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Editor from '../editor/page';
 import LoginFirebase from './loginFirebase';
 import { signOut, User } from 'firebase/auth';
-import { auth } from '@/lib/firebase';
+import { auth } from '../../lib/firebase';
 
 interface MyPageProps {
     user: User;

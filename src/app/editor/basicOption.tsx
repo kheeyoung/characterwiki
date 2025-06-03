@@ -1,8 +1,8 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { onOffPrivate, saveBaisc, deleteBaisc } from "@/service/profileService";
-import BaiscDTO from '@/dto/baiscDTO';
+import { onOffPrivate, saveBaisc, deleteBaisc } from "../../service/profileService";
+import BaiscDTO from '../../dto/baiscDTO'
 
 
 interface BasicOptionProps {
